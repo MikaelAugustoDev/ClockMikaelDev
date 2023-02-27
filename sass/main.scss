@@ -1,0 +1,254 @@
+@import "helpers/mixins";
+@import "helpers/variables";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"); /* importing font */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: $white;
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+  position: relative;
+  background-color: $black;
+  transition: 0.6s ease;
+  overflow: hidden;
+}
+
+.not-loaded {
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.4;
+  background-color: #d8d8d8;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 0fr;
+  transition: 300ms ease;
+  max-width: 1110px;
+  margin-inline: auto;
+  transition: 300ms;
+  padding: 2rem 1rem;
+  &__quote {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    max-width: 575px;
+    transition: 300ms;
+    justify-content: space-between;
+    #quote-author {
+      @include h5;
+    }
+    figure {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+  &__quote-text {
+    @include body-p;
+  }
+  &__clock {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    transition: 300ms;
+  }
+  &__clock-box {
+    max-width: 575px;
+  }
+  &__clock-heading {
+    h4 {
+      @include h4;
+      display: flex;
+      align-items: center;
+    }
+  }
+  &__clock-time {
+    display: flex;
+    align-items: center;
+    span {
+      @include h4;
+    }
+    h1 {
+      @include h1;
+    }
+  }
+  &__clock-location {
+    h3 {
+      @include h3;
+    }
+  }
+  &__button {
+    border: none;
+    cursor: pointer;
+    height: fit-content;
+    width: fit-content;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 5px;
+    text-align: left;
+    text-transform: uppercase;
+    background-color: $white;
+    color: $dark-gray;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 8px 8px 28px;
+    text-align: center;
+    border-radius: 28px;
+    &:hover {
+      circle {
+        fill: gray;
+      }
+    }
+    svg circle {
+      transition-duration: 0.2s;
+    }
+  }
+  .button-arrow {
+    display: flex;
+    transition-duration: 0.3s;
+  }
+  &__clock-more {
+    z-index: 1;
+  }
+  .more-background {
+    transition: 300ms;
+    transform: translateY(50vh);
+    position: absolute;
+    width: 100vw;
+    height: 0;
+    left: 0;
+    top: 50%;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(5px);
+    z-index: -1;
+  }
+  .more-background-night {
+    background: rgba(0, 0, 0, 0.75) !important;
+    .app-container__more-container-item {
+      color: $white !important;
+    }
+  }
+  &__more-container {
+    transition: 300ms;
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  &__more-container-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    color: $dark-gray;
+    h6 {
+      @include h6;
+    }
+    h2 {
+      @include h2;
+    }
+  }
+}
+
+.hidden {
+  height: 0px;
+  overflow: hidden;
+}
+
+.expanded {
+  display: block;
+}
+
+.arrow-rotate {
+  transform: rotateX(180deg);
+}
+
+.refresh-btn {
+  height: 18px;
+  width: 18px;
+  background-image: url(../assets/images/icon-refresh.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  aspect-ratio: 1;
+}
+
+@media (max-width: 768px) {
+  .app-container__clock {
+    flex-direction: column;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+
+  .app-container__more-container {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-container__quote-text {
+    font-size: 0.75rem;
+  }
+  .app-container__quote #quote-author {
+    font-size: 0.75rem;
+  }
+  .app-container__clock-heading h4 {
+    font-size: 0.938rem;
+  }
+  .app-container__clock-time h1 {
+    font-size: 6.25rem;
+  }
+  .app-container__clock-location h3 {
+    font-size: 0.938rem;
+  }
+  .app-container__button {
+    font-size: 0.75rem;
+  }
+  .app-container__more-container-item h6 {
+    font-size: 0.625rem;
+  }
+  .app-container__more-container-item h2 {
+    font-size: 1.25rem;
+  }
+  .currently-text {
+    display: none;
+  }
+  .app-container__more-container-item {
+    gap: unset;
+  }
+  .more-info-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .app-container__more-container {
+    grid-template-columns: 1fr;
+    gap: unset;
+  }
+  .app-container {
+    grid-template-rows: 0fr 60% 1fr;
+  }
+  .app-container .more-background {
+    height: 40vh;
+  }
+}

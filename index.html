@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Mikael Dev">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="manifest" href="assets/site.webmanifest">
+  <link rel="stylesheet" href="sass/main.css">
+  <title>Clock App | MikaelDev</title>
+</head>
+
+<body class="body not-loaded">
+  <div class="app-container">
+    <div class="app-container__quote">
+      <figure>
+        <blockquote>
+          <p class="app-container__quote-text" id="quote-text">
+            <q></q>
+          </p>
+        </blockquote>
+        <figcaption id="quote-author"></figcaption>
+      </figure>
+      <div class="refresh-btn"></div>
+    </div>
+    <div class="app-container__clock">
+      <div class="app-container__clock-box">
+        <div class="app-container__clock-heading">
+          <h4><span></span><span></span><span class="currently-text">, it's currently</span></h4>
+        </div>
+        <div class="app-container__clock-time">
+          <h1>00:00</h1><span id="AMPM"></span>
+        </div>
+        <div class="app-container__clock-location">
+          <h3>in <span id="location"></span></h3>
+        </div>
+      </div>
+      <button class="app-container__button"><span>More</span>
+        <div class="button-arrow"><svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" fill-rule="evenodd">
+              <circle fill="#303030" cx="20" cy="20" r="20" />
+              <path stroke="#FFF" stroke-width="2" d="M14 23l6-6 6 6" />
+            </g>
+          </svg></div>
+      </button>
+    </div>
+    <div class="app-container__clock-more hidden">
+      <div class="app-container__more-container">
+        <div class="app-container__more-container-item">
+          <div class="more-info-block">
+            <h6>Current timezone</h6>
+            <h2 id="timezone">Timezone</h2>
+          </div>
+          <div class="more-info-block">
+            <h6>Day of the year</h6>
+            <h2 id="yearDay">Day</h2>
+          </div>
+        </div>
+        <div class="app-container__more-container-item">
+          <div class="more-info-block">
+            <h6>Day of the week</h6>
+            <h2 id="weekDay">Weekday</h2>
+          </div>
+          <div class="more-info-block">
+            <h6>Week number</h6>
+            <h2 id="weekNumber">Week number</h2>
+          </div>
+        </div>
+      </div>
+      <div class="more-background">
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="overlay"></div>
+  <script src="script.js"></script>
+</body>
+
+</html>
